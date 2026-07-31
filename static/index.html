@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendador de Celulares</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-mobile-alt"></i> Recomendador de Celulares</h1>
+            <p class="subtitle">Encontre o celular perfeito para você</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filters-section">
+            <h2><i class="fas fa-filter"></i> Filtros</h2>
+            
+            <form id="filter-form">
+                <div class="filters-grid">
+                    <!-- Marca -->
+                    <div class="filter-group">
+                        <label for="marca"><i class="fas fa-tag"></i> Marca</label>
+                        <select id="marca" name="marca">
+                            <option value="todas">Todas as marcas</option>
+                        </select>
+                    </div>
+
+                    <!-- Faixa de Preço -->
+                    <div class="filter-group">
+                        <label><i class="fas fa-dollar-sign"></i> Faixa de Preço (R$)</label>
+                        <div class="range-inputs">
+                            <input type="number" id="preco_min" placeholder="Mínimo" min="0">
+                            <span class="range-separator">até</span>
+                            <input type="number" id="preco_max" placeholder="Máximo" min="0">
+                        </div>
+                        <div class="price-display">
+                            <span id="price-range-text">R$ 0 - R$ 10.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Ano de Lançamento -->
+                    <div class="filter-group">
+                        <label><i class="fas fa-calendar"></i> Ano de Lançamento</label>
+                        <div class="range-inputs">
+                            <select id="ano_min">
+                                <option value="">De...</option>
+                            </select>
+                            <span class="range-separator">até</span>
+                            <select id="ano_max">
+                                <option value="">Até...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- RAM -->
+                    <div class="filter-group">
+                        <label for="ram_min"><i class="fas fa-memory"></i> RAM Mínima</label>
+                        <select id="ram_min" name="ram_min">
+                            <option value="">Qualquer</option>
+                            <option value="4">4 GB+</option>
+                            <option value="6">6 GB+</option>
+                            <option value="8">8 GB+</option>
+                            <option value="12">12 GB+</option>
+                            <option value="16">16 GB+</option>
+                        </select>
+                    </div>
+
+                    <!-- Armazenamento -->
+                    <div class="filter-group">
+                        <label for="armazenamento_min"><i class="fas fa-hdd"></i> Armazenamento Mínimo</label>
+                        <select id="armazenamento_min" name="armazenamento_min">
+                            <option value="">Qualquer</option>
+                            <option value="64">64 GB+</option>
+                            <option value="128">128 GB+</option>
+                            <option value="256">256 GB+</option>
+                            <option value="512">512 GB+</option>
+                        </select>
+                    </div>
+
+                    <!-- Tamanho de Tela -->
+                    <div class="filter-group">
+                        <label for="tela_min"><i class="fas fa-expand"></i> Tela Mínima</label>
+                        <select id="tela_min" name="tela_min">
+                            <option value="">Qualquer</option>
+                            <option value="5.0">5.0"+</option>
+                            <option value="6.0">6.0"+</option>
+                            <option value="6.5">6.5"+</option>
+                            <option value="6.7">6.7"+</option>
+                        </select>
+                    </div>
+
+                    <!-- Bateria -->
+                    <div class="filter-group">
+                        <label for="bateria_min"><i class="fas fa-battery-full"></i> Bateria Mínima</label>
+                        <select id="bateria_min" name="bateria_min">
+                            <option value="">Qualquer</option>
+                            <option value="3000">3000 mAh+</option>
+                            <option value="4000">4000 mAh+</option>
+                            <option value="4500">4500 mAh+</option>
+                            <option value="5000">5000 mAh+</option>
+                        </select>
+                    </div>
+
+                    <!-- Câmera -->
+                    <div class="filter-group">
+                        <label for="camera_min"><i class="fas fa-camera"></i> Câmera Mínima</label>
+                        <select id="camera_min" name="camera_min">
+                            <option value="">Qualquer</option>
+                            <option value="12">12 MP+</option>
+                            <option value="48">48 MP+</option>
+                            <option value="50">50 MP+</option>
+                            <option value="64">64 MP+</option>
+                            <option value="108">108 MP+</option>
+                            <option value="200">200 MP+</option>
+                        </select>
+                    </div>
+
+                    <!-- Recursos extras -->
+                    <div class="filter-group checkboxes">
+                        <label><i class="fas fa-cogs"></i> Recursos</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="cinco_g" name="cinco_g">
+                                <span>5G</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="nfc" name="nfc">
+                                <span>NFC</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="resistencia_agua" name="resistencia_agua">
+                                <span>Resistente à água</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Ordenação -->
+                    <div class="filter-group">
+                        <label for="ordenar_por"><i class="fas fa-sort"></i> Ordenar por</label>
+                        <select id="ordenar_por" name="ordenar_por">
+                            <option value="preco_asc">Menor preço</option>
+                            <option value="preco_desc">Maior preço</option>
+                            <option value="ano_desc">Mais recente</option>
+                            <option value="camera_desc">Melhor câmera</option>
+                            <option value="bateria_desc">Maior bateria</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Buscar Celulares
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="btn-limpar">
+                        <i class="fas fa-eraser"></i> Limpar Filtros
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="results-section">
+            <div class="results-header">
+                <h2><i class="fas fa-list"></i> Resultados</h2>
+                <span id="results-count" class="results-count"></span>
+            </div>
+
+            <div id="results-container" class="results-grid">
+                <div class="placeholder-message">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p>Use os filtros acima para encontrar o celular ideal para você!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Recomendador de Celulares. Preços de referência - podem variar.</p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
